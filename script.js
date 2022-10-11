@@ -1,43 +1,86 @@
-let rightBtn = document.querySelector(".choice1-right");
-let leftBtn = document.querySelector(".choice1-left");
 let h1 = document.querySelector("h1")
+let container = document.querySelector(".container");
+let choiceLeft = document.querySelector(".choice-left");
+let choiceRight = document.querySelector(".choice-right");
 let orText = document.querySelector(".orText");
 
-rightBtn.addEventListener("click", funcRightRight1);
-
-function funcRightRight1() {
-    h1.textContent = "För att nå ICA så behöver du passera ett övergångsställe, men plötsligt så ser du en gullig hund!"
-
-    rightBtn.textContent = "Gå till övergångsställe";
-    leftBtn.textContent = "Klappa hunden";
-    rightBtn.addEventListener("click", funcRightRight2);
-    leftBtn.addEventListener("click", funcRightRight2);
-}
 
 
-//  ELIN ÄR BÄST
+// Right (ICA)
+choiceRight.addEventListener("click", function() {
+    console.log("du gick till höger (mot ICA)");
 
-rightBtn.addEventListener("click", funcRightLeft1);
+    h1.textContent = "För att nå ICA så behöver du passera ett övergångsställe, men plötsligt så ser du en gullig hund!";
 
-function funcRightLeft1() {
-    h1.textContent = "123"
+    choiceLeft.textContent = "Klappa hund";
 
-    rightBtn.textContent = "Gå till övergångsställe";
-    leftBtn.textContent = "Klappa hunden";
-    // rightBtn.addEventListener("click", funcRightRight3);
-}
+    choiceRight.textContent = "Passera övergångsställe";
 
+    choiceLeft.addEventListener("click", function() {
+        console.log("du klappade hunden");
 
+        h1.textContent = "Du har nu klappat hunden och kan antingen...";
+    
+        choiceLeft.textContent = "fortsätta till ICA via övergångsstället";
+    
+        choiceRight.textContent = "gå tillbaka hem";
 
+        choiceLeft.addEventListener("click", function() {
+            console.log("du fortsätter mot ICA");
 
-// function funcRightRight2() {
-//     h1.textContent = "Du är framme vid ICA!"
-//     rightBtn.textContent = "Gå hem";
-//     leftBtn.style.display = "none";
-//     orText.style.display = "none";
-//     rightBtn.addEventListener("click", function goHome() {
-//         h1.textContent = "Du är nu hemma igen :)"
-//         rightBtn.style.display = "none";
-//     });
-// }
+            h1.textContent = "Du är framme vid ICA!";
 
+            // hides buttons and paragraph text
+            choiceLeft.style.display = "none";
+            choiceRight.style.display = "none";
+            orText.style.display = "none";
+
+            // creates button, appends & changes text in it
+            const goBackBtn = document.createElement("button");
+            container.appendChild(goBackBtn);
+            goBackBtn.textContent = "Gå tillbaka hem";
+            
+            goBackBtn.addEventListener("click", function() {
+                console.log("du går tillbaka hem från ICA");
+                h1.textContent = "Du är nu hemma igen :)"
+                goBackBtn.style.display = "none";
+            });
+
+        });
+
+        choiceRight.addEventListener("click", function() {
+            console.log("du går direkt tillbaka hem!");
+
+            h1.textContent = "Du är nu hemma igen :)"
+
+            // hides buttons and paragraph text
+            choiceLeft.style.display = "none";
+            choiceRight.style.display = "none";
+            orText.style.display = "none";
+        });
+
+    });
+
+    choiceRight.addEventListener("click", function() {
+        console.log("Du har passerat övergångsstället och är vid ICA");
+
+        h1.textContent = "Du är framme vid ICA!";
+
+        // hides buttons and paragraph text
+        choiceLeft.style.display = "none";
+        choiceRight.style.display = "none";
+        orText.style.display = "none";
+
+        // creates button, appends & changes text in it
+        const goBackBtn = document.createElement("button");
+        container.appendChild(goBackBtn);
+        goBackBtn.textContent = "Gå tillbaka hem";
+
+        goBackBtn.addEventListener("click", function() {
+            console.log("du går tillbaka hem från ICA");
+            h1.textContent = "Du är nu hemma igen :)"
+            goBackBtn.style.display = "none";
+        });
+
+    });
+});
