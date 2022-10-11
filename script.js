@@ -5,8 +5,9 @@ let h1 = document.querySelector("h1")
 rightBtn.addEventListener("click", right1func);
 
 function right1func() {
-const klappahund = document.createElement("button");
-klappahund.insertAdjacentElement("afterend", rightBtn)
+    rightBtn.textContent = "message";
+    // const klappahund = document.createElement("button");
+    // klappahund.insertAdjacentElement("afterend", rightBtn)
 }
 
 
